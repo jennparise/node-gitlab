@@ -100,12 +100,12 @@ class MergeRequests extends BaseService {
     let url;
 
     if (mergerequestIId) {
-      url = `projects/${pId}/merge_requests/${mIId}/approvals`;
+      url = `projects/${pId}/merge_requests/${mIId}/approvers`;
     } else {
-      url = `projects/${pId}/approvals`;
+      url = `projects/${pId}/approvers`;
     }
 
-    return RequestHelper.post(this, url, { approverIds, approverGroupIds, ...options });
+    return RequestHelper.put(this, url, { approverIds, approverGroupIds, ...options });
   }
 
   cancelOnPipelineSucess(projectId: ProjectId, mergerequestIId: MergeRequestId, options?: Sudo) {
